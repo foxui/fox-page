@@ -1,0 +1,40 @@
+
+// Variables
+@import "../fox-core/sass/variables.scss";
+
+// Mixins
+@import "../fox-core/sass/mixins.scss";
+
+// Components
+
+fox-page{
+  height: 100%;
+  overflow: hidden;
+  @include flex-column-container();
+  @include flex-column-item-fullfilled();
+  
+  & > fox-toolbar{
+    @include flex-column-item-fixed();
+  }
+
+  &.nav-left {
+    @include transform(translate3d(-25%, 0, 0));
+    opacity: 0.9;
+    /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+  }
+
+  &.nav-center {
+    @include transform(translate3d(0, 0, 0));
+    opacity: 1;
+  }
+
+  &.nav-right {  
+    @include transform(translate3d(100%, 0, 0));
+  }
+
+  &.transition {
+    @include transition-duration(400ms);
+    @include transition-timing-function(cubic-bezier(.1, .7, .1, 1));
+    // @include animation-timing-function(cubic-bezier(.1, .7, .1, 1));
+  }
+}

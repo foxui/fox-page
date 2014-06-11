@@ -1,0 +1,9 @@
+/*!
+ * =====================================================
+ * Foxui v0.1.0 (https://github.com/foxui/fox-page)
+ * Copyright 2014 fex-team
+ * Licensed under BSD (https://github.com/foxui/fox-page/blob/master/LICENSE)
+ *
+ * v0.1.0 designed by @fex-team.
+ * =====================================================
+ */fox-page{display:-webkit-box;display:-webkit-flex;display:flex;overflow:hidden;flex-direction:column;height:100%;-webkit-box-direction:normal;-webkit-box-orient:vertical;-webkit-flex-direction:column;-webkit-flex-flow:column;flex-flow:column;-webkit-box-flex:1;-webkit-flex:1}fox-page>fox-toolbar{-webkit-box-flex:0;-webkit-flex:0 0 auto;flex:0 0 auto}fox-page.nav-left{-webkit-transform:translate3d(-25%,0,0);-ms-transform:translate3d(-25%,0,0);transform:translate3d(-25%,0,0);opacity:.9}fox-page.nav-center{-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1}fox-page.nav-right{-webkit-transform:translate3d(100%,0,0);-ms-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}fox-page.transition{-webkit-transition-timing-function:cubic-bezier(.1,.7,.1,1);-moz-transition-timing-function:cubic-bezier(.1,.7,.1,1);transition-timing-function:cubic-bezier(.1,.7,.1,1);-webkit-transition-duration:400ms;-moz-transition-duration:400ms;transition-duration:400ms}

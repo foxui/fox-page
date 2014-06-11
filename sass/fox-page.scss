@@ -9,6 +9,12 @@
 
 fox-page{
   height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
   overflow: hidden;
   @include flex-column-container();
   @include flex-column-item-fullfilled();

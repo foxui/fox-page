@@ -28,42 +28,35 @@
         </style>
     </head>
     <body>
-        <fox-page id="page1" class="main-page" transition="hslide">
+        <fox-page id="page1" transition="hslide">
             <fox-toolbar title="Home">
                 <fox-icon icon="icon-bars" class="left"></fox-icon>
                 <fox-icon icon="icon-gear" class="right"></fox-icon>
             </fox-toolbar>
 
             <p>
-                <a href="#page2" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Page 2</a>
+                <button onclick="$('#page1')[0].hide();$('#page2')[0].show();return false;" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Next Page</button>
             </p>
 
             <p>
-                <a href="#page3" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
+                <button onclick="$('#page1')[0].hide();$('#page3')[0].show();return false;" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Next Page </button>
             </p>
 
             <p>
-                <a href="#page4" style="display:block;margin:50px;" transition="vslide"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
+                <button onclick="$('#page1')[0].transition='fade';$('#page1')[0].hide();$('#page4')[0].show();return false;" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Next Page</button>
             </p>
                     
         </fox-page>
 
         <fox-page id="page2" class="transition-out" transition="hslide">
             <fox-toolbar>
-                <fox-icon icon="icon-left-nav" class="left" onclick="history.back();"></fox-icon>
+                <fox-icon icon="icon-left-nav" class="left" onclick="$('#page2')[0].hide(true,true);$('#page1')[0].show(true, true);"></fox-icon>
                 <fox-icon icon="icon-compose" class="right"></fox-icon>
                 <h1>Page 2</h1>
+                <h1 class="prev" onclick="$('#page2')[0].hide(true,true);$('#page1')[0].show(true, true);">Page 1</h1>
             </fox-toolbar>
 
             <fox-page-content>
-
-                <p>
-                    <a href="#page3" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
-                </p>
-
-                <p>
-                    <a href="#page4" style="display:block;margin:50px;" transition="vslide"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
-                </p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
@@ -73,19 +66,13 @@
 
         <fox-page id="page3" class="transition-out" transition="fade">
             <fox-toolbar>
-                <fox-icon icon="icon-left-nav" class="left" onclick="history.back();"></fox-icon>
+                <fox-icon icon="icon-left-nav" class="left" onclick="$('#page3')[0].hide(true,true);$('#page1')[0].show(true, true);"></fox-icon>
                 <fox-icon icon="icon-compose" class="right"></fox-icon>
                 <h1>Page 3</h1>
+                <h1 class="prev" onclick="$('#page3')[0].hide(true,true);$('#page1')[0].show(true, true);">Page 1</h1>
             </fox-toolbar>
 
             <fox-page-content>
-                <p>
-                    <a href="#page2" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Page 2</a>
-                </p>
-
-                <p>
-                    <a href="#page4" transition="vslide" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
-                </p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
@@ -93,21 +80,15 @@
             </fox-page-content>
         </fox-page>
 
-        <fox-page id="page4" class="transition-out">
+        <fox-page id="page4" class="transition-out" transition="vslide">
             <fox-toolbar>
-                <fox-icon icon="icon-left-nav" class="left" onclick="history.back();"></fox-icon>
+                <fox-icon icon="icon-left-nav" class="left" onclick="$('#page4')[0].hide(true,true);$('#page1')[0].show(true, true);$('#page1')[0].transition='hslide';"></fox-icon>
                 <fox-icon icon="icon-compose" class="right"></fox-icon>
                 <h1>Page 4</h1>
+                <h1 class="prev" onclick="$('#page4')[0].hide(true,true);$('#page1')[0].show(true, true);$('#page1')[0].transition='hslide'">Page 1</h1>
             </fox-toolbar>
 
             <fox-page-content>
-                <p>
-                    <a href="#page2" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Page 2</a>
-                </p>
-
-                <p>
-                    <a href="#page3" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
-                </p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
                 <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>

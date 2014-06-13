@@ -23,24 +23,59 @@ fox-page{
     @include flex-column-item-fixed();
   }
 
-  &.nav-left {
+  // be out of screen and preparing for transition in
+  &.transition-out {
+    display: none;
+  }
+
+  // horizontal slide 
+  &.fx-slide-left {
     @include transform(translate3d(-25%, 0, 0));
     opacity: 0.9;
     /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
   }
 
-  &.nav-center {
+  &.fx-slide-center {
     @include transform(translate3d(0, 0, 0));
     opacity: 1;
   }
 
-  &.nav-right {  
+  &.fx-slide-right {  
     @include transform(translate3d(100%, 0, 0));
+  }
+
+  // vertical slide
+  &.fx-slide-down {
+    @include transform(translate3d(0, 100%, 0));
+    opacity: 0.9;
+    /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+  }
+
+  &.fx-slide-middle {
+    @include transform(translate3d(0, 0, 0));
+    opacity: 1;
+  }
+
+  &.fx-slide-up {  
+    @include transform(translate3d(0, -100%, 0));
+    opacity: 0.9;
+  }
+
+  // fade in out
+  &.fx-fade-in {
+    opacity: 1;
+  }
+
+  &.fx-fade-out {
+    opacity: 0;
+    z-index: -1;
   }
 
   &.transition {
     @include transition-duration(400ms);
-    @include transition-timing-function(cubic-bezier(.1, .7, .1, 1));
-    // @include animation-timing-function(cubic-bezier(.1, .7, .1, 1));
+    // @include transition-timing-function(cubic-bezier(.1, .7, .1, 1));
+    @include animation-timing-function(cubic-bezier(.1, .7, .1, 1));
   }
+
+
 }

@@ -34,18 +34,6 @@ module.exports = function(grunt) {
       dist: ['<%= meta.distPath %>']
     },
 
-    concat: {
-      foxui: {
-        options: {
-          banner: '<%= banner %>'
-        },
-        src: [
-          'src/*.js',
-        ],
-        dest: '<%= meta.distPath %><%= pkg.name %>.js'
-      }
-    },
-
     sass: {
       options: {
         banner: '<%= banner %>',
@@ -124,8 +112,7 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('dist-css', ['sass', 'csscomb', 'cssmin']);
-  grunt.registerTask('dist-js', ['concat', 'uglify']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'copy']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'copy']);
   grunt.registerTask('build', ['dist']);
   grunt.registerTask('default', ['dist']);
   grunt.registerTask('test', ['dist', 'qunit']);

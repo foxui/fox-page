@@ -1,9 +1,119 @@
-<fox-element name="fox-page">
+<fox-element name="fox-page" attributes="transition">
     <script>
     (function(env){
         var fox = env.fox;
+        var outCls = 'transition-out';
 
-        fox('fox-page');
+        var transitions = {
+            forward: {
+                fade: {
+                    init: 'fx-fade-out',
+                    show: 'fx-fade-in',
+                    hide: 'fx-fade-out'
+                },
+
+                hslide: {
+                    init: 'fx-slide-right',
+                    show: 'fx-slide-center',
+                    hide: 'fx-slide-left'
+                },
+
+                vslide: {
+                    init: 'fx-slide-down',
+                    show: 'fx-slide-middle',
+                    hide: 'fx-slide-up'
+                }
+            },
+
+            backward: {
+                hslide: {
+                    init: 'fx-slide-left',
+                    show: 'fx-slide-center',
+                    hide: 'fx-slide-right'
+                },
+
+                vslide: {
+                    init: 'fx-slide-up',
+                    show: 'fx-slide-middle',
+                    hide: 'fx-slide-down'
+                }
+            }
+        };
+
+        function fx(action, animation, backward) {
+            var transition = this.transition || 'fade';
+            var dir = backward ? 'backward' : 'forward';
+            animation = (animation === false ? false : true);
+
+            var effect = transitions[dir] || transitions['forward'];
+
+            if (!effect[transition]) {
+                effect[transition] = transitions['forward'][transition];
+            }
+
+            if (!effect || !effect[transition]) {
+                throw new Error('No transitions for direction ' + dir);
+            }
+
+            var actCls = effect[transition][action];
+            var initCls = effect[transition].init;
+            var me = this;
+
+            this.classList.remove('transition');
+
+            if (!animation) {
+                clearFX(me);
+                this.classList.add(actCls);
+            }
+            else {
+                if (action == 'show') {
+                    clearFX(this);
+                    this.classList.add(initCls);
+                    clearOutCls(this);
+                }
+
+                setTimeout(function(){
+                    clearFX(me);
+                    me.classList.add('transition');
+                    me.classList.add(actCls);
+                }, 60);
+            }
+        }
+
+        function clearFX(el) {
+            var list = el.classList;
+            var listArr = fox.toArray(list);
+
+            listArr.forEach(function(cls){
+                if (cls.indexOf('fx-') === 0 || cls === outCls) {
+                    list.remove(cls);
+                }
+            });
+        }
+
+        function clearOutCls(el) {
+            el.classList.remove(outCls);
+        }
+
+        function transitionEnd() {
+            this.removeEventListener('transitionend', transitionEnd, false);
+
+            this.classList.add(outCls);
+        }
+
+        fox('fox-page', {
+
+            methods: {
+                show: function(animation, backward) {
+                    fx.apply(this, ['show', animation, backward]);
+                },
+
+                hide: function(animation, backward) {
+                    this.addEventListener('transitionend', transitionEnd, false);
+                    fx.apply(this, ['hide', animation, backward]);
+                }
+            }
+        });
     })(this);
     </script>
 </fox>

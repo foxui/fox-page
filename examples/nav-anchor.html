@@ -23,7 +23,7 @@
         }
 
         fox-page a,fox-icon.icon{
-            font-size: 24px;
+            font-size: 14px;
         }
         </style>
     </head>
@@ -33,18 +33,31 @@
                 <fox-icon icon="icon-bars" class="left"></fox-icon>
                 <fox-icon icon="icon-gear" class="right"></fox-icon>
             </fox-toolbar>
+            <fox-page-content>
+                <p>
+                    <a href="#page2" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Page 2</a>
+                </p>
 
-            <p>
-                <a href="#page2" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Horizontal Slide In Page 2</a>
-            </p>
+                <p>
+                    <a href="#page3" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
+                </p>
 
-            <p>
-                <a href="#page3" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
-            </p>
+                <p>
+                    <a href="#page4" style="display:block;margin:50px;" transition="vslide"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
+                </p>
 
-            <p>
-                <a href="#page4" style="display:block;margin:50px;" transition="vslide"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
-            </p>
+                <p>
+                    <a href="page5" style="display:block;margin:50px;" transition="hslide" title="Page 5"><fox-icon icon="icon-right"></fox-icon> Slide In Empty Page 5</a>
+                </p>
+
+                <p>
+                    <a href="page6" style="display:block;margin:50px;" title="Page 6"><fox-icon icon="icon-right"></fox-icon> Default Transition In Empty Page 6</a>
+                </p>
+
+                <p>
+                    <a href="http://www.baidu.com" style="display:block;margin:50px;" no-nav><fox-icon icon="icon-right"></fox-icon> Directly jump to baidu.com</a>
+                </p>
+            </fox-page-content>
                     
         </fox-page>
 

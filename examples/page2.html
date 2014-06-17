@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Page 2</title>
+        <link rel="stylesheet" href="../../fox-core/dist/foxui.css">
+        <link rel="stylesheet" href="../dist/fox-page.css">
+        <link rel="stylesheet" href="../../fox-toolbar/dist/fox-toolbar.css">
+        <link rel="stylesheet" href="../../fox-icon/dist/css/fox-icon.css">
+        <link rel="stylesheet" href="../../fox-page-content/dist/fox-page-content.css">
+        <script src="../../fox-core/dist/foxui.js"></script>
+        <link rel="import" href="../../fox-toolbar/dist/fox-toolbar.html"/>
+        <link rel="import" href="../../fox-icon/dist/fox-icon.html"/>
+        <link rel="import" href="../../fox-page-content/dist/fox-page-content.html"/>
+        <link rel="import" href="../dist/fox-page.html"/>
+        <style>
+        fox-page-content{
+            padding: 10px;
+        }
+
+        fox-page a,fox-icon.icon{
+            font-size: 14px;
+        }
+        </style>
+    </head>
+    <body>
+        <!--通过 ajax 实现页面切换时必须为页面添加 main-page，这样才能保证直接打开该页面时也能正常操作-->
+        <fox-page class="main-page" transition="hslide">
+            <fox-toolbar>
+                <fox-icon icon="icon-left-nav" class="left" onclick="history.back();"></fox-icon>
+                <fox-icon icon="icon-compose" class="right"></fox-icon>
+                <h1>Page 2</h1>
+            </fox-toolbar>
+
+            <fox-page-content>
+
+                <p>
+                    <a href="page3.html" style="display:block;margin:50px;" transition="fade"><fox-icon icon="icon-right"></fox-icon> Fade In Page 3 </a>
+                </p>
+
+                <p>
+                    <a href="page4.html" style="display:block;margin:50px;" transition="vslide"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Page 4</a>
+                </p>
+                <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
+                <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
+                <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
+                <p>Web pages on iOS by default have a "momentum" style scrolling where a flick of the finger sends the web page scrolling and it keeps going until eventually slowing down and stopping as if friction is slowing it down. Like if you were to push a hockey puck across the ice or something. You might think that any element with scrolling would have this behavior as well, but it doesn't. You can add it back with a special property.</p>
+            </fox-page-content>
+        </fox-page>
+    </body>
+</html>

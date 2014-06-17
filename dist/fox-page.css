@@ -30,8 +30,6 @@ fox-page
     -webkit-flex-direction: column;
     -webkit-flex-flow: column;
             flex-flow: column;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
 }
 fox-page > fox-toolbar
 {

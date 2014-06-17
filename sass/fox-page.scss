@@ -17,7 +17,6 @@ fox-page{
   left:0;
   overflow: hidden;
   @include flex-column-container();
-  @include flex-column-item-fullfilled();
   
   & > fox-toolbar{
     @include flex-column-item-fixed();

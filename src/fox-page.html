@@ -21,7 +21,7 @@
                 vslide: {
                     init: 'fx-slide-down',
                     show: 'fx-slide-middle',
-                    hide: 'fx-slide-up'
+                    hide: 'fx-slide-down'
                 }
             },
 
@@ -33,7 +33,7 @@
                 },
 
                 vslide: {
-                    init: 'fx-slide-up',
+                    init: 'fx-slide-down',
                     show: 'fx-slide-middle',
                     hide: 'fx-slide-down'
                 }
@@ -45,38 +45,45 @@
             var dir = backward ? 'backward' : 'forward';
             animation = (animation === false ? false : true);
 
-            var effect = transitions[dir] || transitions['forward'];
-
-            if (!effect[transition]) {
-                effect[transition] = transitions['forward'][transition];
-            }
-
-            if (!effect || !effect[transition]) {
-                throw new Error('No transitions for direction ' + dir);
-            }
-
-            var actCls = effect[transition][action];
-            var initCls = effect[transition].init;
-            var me = this;
-
             this.classList.remove('transition');
 
             if (!animation) {
-                clearFX(me);
+                clearFX(this);
                 this.classList.add(actCls);
             }
             else {
-                if (action == 'show') {
+
+                var effect = transitions[dir] || transitions['forward'];
+
+                if (!effect[transition]) {
+                    effect[transition] = transitions['forward'][transition];
+                }
+
+                if (!effect || !effect[transition]) {
+                    throw new Error('No transitions for direction ' + dir);
+                }
+
+                var actCls = effect[transition][action];
+                var initCls = effect[transition].init;
+                var me = this;
+
+                if (action === 'show') {
+                    // keep this duplicated code here
                     clearFX(this);
                     this.classList.add(initCls);
-                    clearOutCls(this);
                 }
 
                 setTimeout(function(){
+                    // keep this duplicated code here
                     clearFX(me);
                     me.classList.add('transition');
                     me.classList.add(actCls);
                 }, 60);
+            }
+
+            // clear hide class
+            if (action === 'show') {
+                clearOutCls(this);
             }
         }
 
@@ -85,7 +92,7 @@
             var listArr = fox.toArray(list);
 
             listArr.forEach(function(cls){
-                if (cls.indexOf('fx-') === 0 || cls === outCls) {
+                if (cls.indexOf('fx-') === 0) {
                     list.remove(cls);
                 }
             });
@@ -109,7 +116,15 @@
                 },
 
                 hide: function(animation, backward) {
-                    this.addEventListener('transitionend', transitionEnd, false);
+                    animation = animation === false ? false : true;
+
+                    if (animation) {
+                        this.addEventListener('transitionend', transitionEnd, false);
+                    }
+                    else {
+                        this.classList.add(outCls);
+                    }
+                    
                     fx.apply(this, ['hide', animation, backward]);
                 }
             }

@@ -1,9 +1,9 @@
 
 // Variables
-@import "../fox-core/sass/variables.scss";
+@import "../../fox-core/sass/variables.scss";
 
 // Mixins
-@import "../fox-core/sass/mixins.scss";
+@import "../../fox-core/sass/mixins.scss";
 
 // Components
 
@@ -18,7 +18,7 @@ fox-page{
   overflow: hidden;
   @include flex-column-container();
   
-  & > fox-toolbar{
+  & > .bar{
     @include flex-column-item-fixed();
   }
 

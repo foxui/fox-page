@@ -31,7 +31,7 @@ fox-page
     -webkit-flex-flow: column;
             flex-flow: column;
 }
-fox-page > fox-toolbar
+fox-page > .bar
 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;

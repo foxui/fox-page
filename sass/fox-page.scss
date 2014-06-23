@@ -25,6 +25,8 @@ fox-page{
   // be out of screen and preparing for transition in
   &.transition-out {
     display: none;
+    // http://dev.w3.org/csswg/css-will-change/
+    will-change: transform;
   }
 
   // horizontal slide 

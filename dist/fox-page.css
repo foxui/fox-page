@@ -40,6 +40,8 @@ fox-page > .bar
 fox-page.transition-out
 {
     display: none;
+
+    will-change: transform;
 }
 fox-page.fx-slide-left
 {

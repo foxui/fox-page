@@ -1,0 +1,90 @@
+/*!
+ * =====================================================
+ * Foxui v0.1.0 (https://github.com/foxui/fox-page)
+ * Copyright 2014 fex-team
+ * Licensed under BSD (https://github.com/foxui/fox-page/blob/master/LICENSE)
+ *
+ * v0.1.0 designed by @fex-team.
+ * =====================================================
+ */
+
+fox-page {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-flow: column;
+  flex-flow: column;
+}
+fox-page > .bar {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+fox-page.transition-out {
+  display: none;
+  will-change: transform;
+}
+fox-page.fx-slide-left {
+  -webkit-transform: translate3d(-25%, 0, 0);
+  -ms-transform: translate3d(-25%, 0, 0);
+  transform: translate3d(-25%, 0, 0);
+  opacity: 0.9;
+  /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+}
+fox-page.fx-slide-center {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+fox-page.fx-slide-right {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+fox-page.fx-slide-down {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  opacity: 0.9;
+  /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+}
+fox-page.fx-slide-middle {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+fox-page.fx-slide-up {
+  -webkit-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+  opacity: 0.9;
+}
+fox-page.fx-fade-in {
+  opacity: 1;
+}
+fox-page.fx-fade-out {
+  opacity: 0;
+  z-index: -1;
+}
+fox-page.transition {
+  -webkit-transition-duration: 400ms;
+  -moz-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+}

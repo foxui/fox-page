@@ -2,12 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-
+        
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <title>Test of fox-page</title>
         <link rel="stylesheet" href="../../fox-core/dist/foxui.css">
+        <link rel="stylesheet" href="../dist/fox-page.css">
+        <link rel="stylesheet" href="../../fox-toolbar/dist/fox-toolbar.css">
+        <link rel="stylesheet" href="../../fox-icon/dist/css/fox-icon.css">
+        <link rel="stylesheet" href="../../fox-page-content/dist/fox-page-content.css">
         <script src="../../fox-core/dist/foxui.js"></script>
         <link rel="import" href="../../fox-toolbar/dist/fox-toolbar.html"/>
         <link rel="import" href="../../fox-icon/dist/fox-icon.html"/>
@@ -41,7 +45,7 @@
             <p>
                 <button onclick="$('#page1')[0].transition='fade';$('#page1')[0].hide();$('#page4')[0].show();return false;" style="display:block;margin:50px;"><fox-icon icon="icon-right"></fox-icon> Vertical Slide In Next Page</button>
             </p>
-
+                    
         </fox-page>
 
         <fox-page id="page2" class="transition-out" transition="hslide">

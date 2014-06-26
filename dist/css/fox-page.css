@@ -80,6 +80,9 @@ fox-page.fx-fade-out {
   opacity: 0;
   z-index: -1;
 }
+fox-page.fx-display-hide {
+  display: none;
+}
 fox-page.transition {
   -webkit-transition-duration: 400ms;
   -moz-transition-duration: 400ms;

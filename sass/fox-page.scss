@@ -17,7 +17,7 @@ fox-page{
   left:0;
   overflow: hidden;
   @include flex-column-container();
-  
+
   & > .bar{
     @include flex-column-item-fixed();
   }
@@ -29,7 +29,7 @@ fox-page{
     will-change: transform;
   }
 
-  // horizontal slide 
+  // horizontal slide
   &.fx-slide-left {
     @include transform(translate3d(-25%, 0, 0));
     opacity: 0.9;
@@ -41,7 +41,7 @@ fox-page{
     opacity: 1;
   }
 
-  &.fx-slide-right {  
+  &.fx-slide-right {
     @include transform(translate3d(100%, 0, 0));
   }
 
@@ -57,7 +57,7 @@ fox-page{
     opacity: 1;
   }
 
-  &.fx-slide-up {  
+  &.fx-slide-up {
     @include transform(translate3d(0, -100%, 0));
     opacity: 0.9;
   }
@@ -70,6 +70,10 @@ fox-page{
   &.fx-fade-out {
     opacity: 0;
     z-index: -1;
+  }
+
+  &.fx-display-hide {
+    display: none;
   }
 
   &.transition {

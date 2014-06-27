@@ -131,12 +131,21 @@
         function hideTransitionEnd() {
             this.removeEventListener('transitionend', hideTransitionEnd, false);
 
+            if (this.action === 'show') {
+                return;
+            }
+
             this.classList.add(outCls);
             fireEvent.call(this, 'afterhide');
         }
 
         function showTransitionEnd() {
             this.removeEventListener('transitionend', showTransitionEnd, false);
+
+            if (this.action === 'hide') {
+                return;
+            }
+
             fireEvent.call(this, 'afterhide');
         }
 
@@ -150,6 +159,8 @@
 
             methods: {
                 show: function(animation, backward) {
+                    this.action = 'show';
+
                     fireEvent.call(this, 'beforeshow');
 
                     fx.apply(this, ['show', animation, backward]);
@@ -158,12 +169,13 @@
                         this.addEventListener('transitionend', showTransitionEnd, false);
                     }
                     else {
-                        this.classList.add(outCls);
                         fireEvent.call(this, 'aftershow');
                     }
                 },
 
                 hide: function(animation, backward) {
+                    this.action = 'hide';
+
                     fireEvent.call(this, 'beforehide');
 
                     animation = animation === false ? false : true;

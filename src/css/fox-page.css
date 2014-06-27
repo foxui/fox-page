@@ -26,6 +26,7 @@ fox-page {
   flex-direction: column;
   -webkit-flex-flow: column;
   flex-flow: column;
+  z-index: 2;
 }
 fox-page > .bar {
   -webkit-box-flex: 0;

@@ -18,6 +18,8 @@ fox-page{
   overflow: hidden;
   @include flex-column-container();
 
+  z-index: index($elements, fox-page);
+
   & > .bar{
     @include flex-column-item-fixed();
   }

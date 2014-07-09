@@ -92,3 +92,18 @@ fox-page.transition {
   -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
   animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
 }
+fox-page .page-loading-wrapper {
+  display: none;
+}
+
+fox-page.fox-page-loading .page-loading-wrapper {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+fox-page.fox-page-loading .page-loading-wrapper fox-icon {
+  color: #777;
+  font-size: 32px;
+}

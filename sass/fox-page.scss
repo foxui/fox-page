@@ -8,81 +8,97 @@
 // Components
 
 fox-page{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  overflow: hidden;
-  @include flex-column-container();
 
-  z-index: index($elements, fox-page);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    overflow: hidden;
+    @include flex-column-container();
 
-  & > .bar{
-    @include flex-column-item-fixed();
-  }
+    z-index: index($elements, fox-page);
 
-  // be out of screen and preparing for transition in
-  &.transition-out {
-    display: none;
-    // http://dev.w3.org/csswg/css-will-change/
-    will-change: transform;
-  }
+    & > .bar{
+        @include flex-column-item-fixed();
+    }
 
-  // horizontal slide
-  &.fx-slide-left {
-    @include transform(translate3d(-25%, 0, 0));
-    opacity: 0.9;
-    /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
-  }
+    // be out of screen and preparing for transition in
+    &.transition-out {
+        display: none;
+        // http://dev.w3.org/csswg/css-will-change/
+        will-change: transform;
+    }
 
-  &.fx-slide-center {
-    @include transform(translate3d(0, 0, 0));
-    opacity: 1;
-  }
+    // horizontal slide
+    &.fx-slide-left {
+        @include transform(translate3d(-25%, 0, 0));
+        opacity: 0.9;
+        /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+    }
 
-  &.fx-slide-right {
-    @include transform(translate3d(100%, 0, 0));
-  }
+    &.fx-slide-center {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+    }
 
-  // vertical slide
-  &.fx-slide-down {
-    @include transform(translate3d(0, 100%, 0));
-    opacity: 0.9;
-    /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
-  }
+    &.fx-slide-right {
+        @include transform(translate3d(100%, 0, 0));
+    }
 
-  &.fx-slide-middle {
-    @include transform(translate3d(0, 0, 0));
-    opacity: 1;
-  }
+    // vertical slide
+    &.fx-slide-down {
+        @include transform(translate3d(0, 100%, 0));
+        opacity: 0.9;
+        /*box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);*/
+    }
 
-  &.fx-slide-up {
-    @include transform(translate3d(0, -100%, 0));
-    opacity: 0.9;
-  }
+    &.fx-slide-middle {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+    }
 
-  // fade in out
-  &.fx-fade-in {
-    opacity: 1;
-  }
+    &.fx-slide-up {
+        @include transform(translate3d(0, -100%, 0));
+        opacity: 0.9;
+    }
 
-  &.fx-fade-out {
-    opacity: 0;
-    z-index: -1;
-  }
+    // fade in out
+    &.fx-fade-in {
+        opacity: 1;
+    }
 
-  &.fx-display-hide {
-    display: none;
-  }
+    &.fx-fade-out {
+        opacity: 0;
+        z-index: -1;
+    }
 
-  &.transition {
-    @include transition-duration(400ms);
-    // @include transition-timing-function(cubic-bezier(.1, .7, .1, 1));
-    @include animation-timing-function(cubic-bezier(.1, .7, .1, 1));
-  }
+    &.fx-display-hide {
+        display: none;
+    }
 
+    &.transition {
+        @include transition-duration(400ms);
+        // @include transition-timing-function(cubic-bezier(.1, .7, .1, 1));
+        @include animation-timing-function(cubic-bezier(.1, .7, .1, 1));
+    }
 
+    .page-loading-wrapper {
+        display: none;
+    }
+}
+
+fox-page.fox-page-loading .page-loading-wrapper {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+
+    fox-icon {
+        color: #777;
+        font-size: 32px;
+    }
 }

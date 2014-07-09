@@ -5,6 +5,7 @@
     (function(env){
         var fox = env.fox;
         var outCls = 'transition-out';
+        var loadingCls = 'fox-page-loading';
 
         var transitions = {
             forward: {
@@ -73,25 +74,25 @@
 
             this.classList.remove('transition');
 
+            var effect = transitions[dir] || transitions['forward'];
+
+            if (!effect[transition]) {
+                effect[transition] = transitions['forward'][transition];
+            }
+
+            if (!effect || !effect[transition]) {
+                throw new Error('No transitions for direction ' + dir);
+            }
+
+            var actCls = effect[transition][action];
+            var initCls = effect[transition].init;
+            var me = this;
+
             if (!animation) {
                 clearFX(this);
                 this.classList.add(actCls);
             }
             else {
-
-                var effect = transitions[dir] || transitions['forward'];
-
-                if (!effect[transition]) {
-                    effect[transition] = transitions['forward'][transition];
-                }
-
-                if (!effect || !effect[transition]) {
-                    throw new Error('No transitions for direction ' + dir);
-                }
-
-                var actCls = effect[transition][action];
-                var initCls = effect[transition].init;
-                var me = this;
 
                 if (action === 'show') {
                     // keep this duplicated code here
@@ -149,6 +150,24 @@
             fireEvent.call(this, 'afterhide');
         }
 
+        function initLoadingElement() {
+            var el = this.querySelector('.page-loading-wrapper');
+            var cnt = this.querySelector('fox-page-content');
+
+            if (cnt && !el) {
+                el = document.createElement('div');
+                el.className = 'page-loading-wrapper';
+
+                var icon = document.createElement('fox-icon');
+                icon.className = 'animate-spin';
+                icon.icon = 'icon-spin5';
+
+                el.appendChild(icon);
+
+                cnt.appendChild(el);
+            }
+        }
+
         function fireEvent(type) {
             fox.fireEvent(this, type, {
                 detail: this
@@ -156,6 +175,24 @@
         }
 
         fox('fox-page', {
+
+            lifecycle: {
+                created: function() {
+                    this.classList.toggle(loadingCls, this.loading);
+
+                    if (this.loading) {
+                        initLoadingElement.call(this);
+                    }
+                },
+
+                attributeChanged: function() {
+                    this.classList.toggle(loadingCls, this.loading);
+
+                    if (this.loading) {
+                        initLoadingElement.call(this);
+                    }
+                }
+            },
 
             methods: {
                 show: function(animation, backward) {
@@ -188,6 +225,14 @@
                     }
 
                     fx.apply(this, ['hide', animation, backward]);
+                }
+            },
+
+            accessors: {
+                loading: {
+                    attribute: {
+                        boolean: true
+                    }
                 }
             }
         });
